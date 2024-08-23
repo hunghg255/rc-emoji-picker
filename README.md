@@ -33,12 +33,19 @@ import EmojiPicker from 'rc-emoji-picker'
 import 'rc-emoji-picker/style.css'
 
 function App() {
+  const [emoji, setEmoji] = useState('')
+
   return (
     <EmojiPicker
-      onSelect={(emoji) => {
-        console.log(emoji)
+      onChange={(v: any) => {
+        setEmoji(v)
       }}
-    />
+    >
+      <button type="button">
+        Select Emoji
+        <span>{emoji}</span>
+      </button>
+    </EmojiPicker>
   )
 }
 ```
