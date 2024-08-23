@@ -1,0 +1,111 @@
+{
+  "name": "rc-emoji-picker",
+  "type": "module",
+  "version": "0.0.1",
+  "main": "./lib/rc-emoji-picker.cjs",
+  "module": "./lib/rc-emoji-picker.js",
+  "types": "./lib/index.d.ts",
+  "description": "A simple emoji picker for React",
+  "packageManager": "pnpm@9.7.0",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/rc-emoji-picker.js"
+      },
+      "require": {
+        "types": "./lib/index.d.cts",
+        "default": "./lib/rc-emoji-picker.cjs"
+      }
+    },
+    "./style.css": {
+      "import": "./lib/style.css",
+      "require": "./lib/style.css"
+    }
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "files": [
+    "lib",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build:lib": "vite build && pnpm modify-css",
+    "build:lib:dev": "vite build --watch",
+    "build:playground": "pnpm build:lib && pnpm --dir ./playground run build",
+    "prepublishOnly": "pnpm build:lib",
+    "playground": "pnpm --dir ./playground run dev",
+    "preview": "pnpm --dir ./playground run preview",
+    "lint": "eslint src --quiet",
+    "lint:fix": "eslint src --fix",
+    "type-check": "tsc",
+    "verify-commit": "verify-commit-msg",
+    "prepare": "git-scm-hooks",
+    "release": "bumpp -r",
+    "gen-changelog": "esno ./scripts/genExtensions.ts && esno ./scripts/changelog.ts",
+    "modify-css": "esno ./scripts/modifyCss.ts"
+  },
+  "dependencies": {
+    "@radix-ui/react-popover": "^1.1.1",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.25.1",
+    "@eslint-react/eslint-plugin": "^1.10.1",
+    "@total-typescript/ts-reset": "^0.5.1",
+    "@types/node": "^22.3.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "bumpp": "^9.5.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "esno": "^4.7.0",
+    "git-scm-hooks": "^0.0.11",
+    "postcss": "^8.4.41",
+    "postcss-replace": "^2.0.1",
+    "postcss-scss": "^4.0.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.77.8",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss": "^3.4.10",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.5.4",
+    "verify-commit-msg": "^0.0.14",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.0.3"
+  },
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ],
+  "git-hooks": {
+    "pre-commit": "npm run lint:fix",
+    "commit-msg": "npm run verify-commit"
+  },
+  "peerDependencies": {
+    "react": ">= 17.0.0",
+    "react-dom": ">= 17.0.0"
+  },
+  "keywords": [
+    "react",
+    "emoji"
+  ],
+  "homepage": "https://rc-emoji-picker.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hunghg255/rc-emoji-picker.git"
+  },
+  "bugs": "https://github.com/hunghg255/rc-emoji-picker/issues"
+}
